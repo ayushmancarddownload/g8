@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zooplop Unblocked - GameSite Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="google-site-verification" content="1prkdKNd1M6kw2txl_JcKt38zFJKsnyjpjZWEcTCR2k"/>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #111827; }
+        ::-webkit-scrollbar-thumb { background: #374151; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4b5563; }
+
+        /* Yellow glow animation for the Reload button */
+        @keyframes yellow-subtle-glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(234, 179, 8, 0.2); }
+            50% { box-shadow: 0 0 15px rgba(234, 179, 8, 0.5); }
+        }
+        .animate-yellow-glow { animation: yellow-subtle-glow 2s ease-in-out infinite; }
+
+        /* Fade in for new infinite content */
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-black text-white font-sans selection:bg-blue-500/30">
+    <!-- Header -->
+    <header class="flex justify-between items-center p-3 bg-gray-900 sticky top-0 z-50 border-b border-gray-800 shadow-lg">
+        <a href="index.html" class="text-xl font-bold hover:text-blue-400 transition-colors flex items-center gap-2">
+            <span class="bg-blue-600 px-2 py-0.5 rounded text-white text-xs">PRO</span>
+            GameSite
+        </a>
+        <div class="hidden sm:block text-gray-500 text-[10px] tracking-widest uppercase font-medium">
+            [ CTRL+D = Support Us ]
+        </div>
+        <nav>
+            <ul class="flex space-x-5 text-sm">
+                <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">Games</a></li>
+                <li><a href="#" class="text-gray-300 hover:text-white transition-colors">About</a></li>
+                <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Privacy</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="flex flex-col lg:flex-row p-3 gap-4 max-w-[1600px] mx-auto">
+        <!-- Game Section -->
+        <section class="flex-1 flex flex-col items-center">
+            <div class="relative w-full max-w-4xl aspect-[16/9] border-2 border-gray-800 rounded-xl overflow-hidden bg-gray-900 shadow-2xl group">
+                <iframe id="gameFrame" 
+                    src="about:blank"
+                    data-src="https://ayushmancarddownload.github.io/g8/" 
+                    class="w-full h-full opacity-0 transition-opacity duration-700 z-10" 
+                    frameborder="0" 
+                    allowfullscreen
+                    referrerpolicy="no-referrer">
+                </iframe>
+
+                <div id="playOverlay" class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-gray-900/90 backdrop-blur-md transition-all duration-700">
+                    <div class="relative z-30 flex flex-col items-center text-center px-4">
+                        <div id="mainPlayBtn" class="w-24 h-24 mb-6 relative group cursor-pointer" onclick="handleSmartStart()">
+                            <div class="absolute inset-0 bg-blue-500 rounded-full animate-ping opacity-20"></div>
+                            <div class="relative bg-blue-600 hover:bg-blue-500 text-white w-full h-full rounded-full flex items-center justify-center shadow-lg transition-transform transform group-hover:scale-110 active:scale-95">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-10 h-10 ml-1" viewBox="0 0 16 16">
+                                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h2 class="text-3xl font-black italic tracking-tighter text-white drop-shadow-lg mb-2 uppercase">ZOOPLOP</h2>
+                        <p class="text-blue-300 font-medium text-sm tracking-widest uppercase italic">Click to Start Playing</p>
+                    </div>
+                </div>
+
+                <div id="loadingIndicator" class="hidden absolute inset-0 z-15 flex items-center justify-center bg-gray-900">
+                    <div class="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+            </div>
+
+            <!-- Title & Bottom Action Bar -->
+            <div class="flex flex-wrap justify-between items-center w-full max-w-4xl mt-3 px-1 gap-3">
+                <div class="flex-1 min-w-[200px]">
+                    <h1 class="text-xl font-extrabold text-white">Zooplop Unblocked</h1>
+                    <p class="text-gray-400 text-xs">Animals • Merge • Strategy</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="popupFallback" onclick="openInPopup()" class="hidden items-center gap-2 bg-yellow-500/10 hover:bg-yellow-500 text-yellow-500 hover:text-black px-5 py-2 rounded-lg font-bold text-sm transition-all border border-yellow-500/30 animate-yellow-glow whitespace-nowrap uppercase tracking-wider">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                        Reload
+                    </button>
+                    <button onclick="goFullscreen()" class="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-5 py-2 rounded-lg font-bold text-sm transition-all border border-gray-700 hover:border-blue-500 group">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                        </svg>
+                        Full Screen
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Sidebar -->
+        <aside class="hidden lg:flex w-72 flex-col">
+            <div class="bg-gray-900 rounded-xl p-4 border border-gray-800 h-full min-h-[450px] flex flex-col items-center justify-center relative overflow-hidden group">
+                <span class="absolute top-4 text-gray-600 text-[10px] font-bold uppercase tracking-widest z-10">Advertisement</span>
+                <div class="w-full h-full bg-gray-800/20 rounded border border-dashed border-gray-700 flex flex-col items-center justify-center text-gray-500 p-6 text-center group-hover:border-gray-600 transition-colors">
+                    <p class="italic text-sm">300x600 Ad Slot</p>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Infinite Scroll Section -->
+    <section class="max-w-[1600px] mx-auto p-6 mt-4">
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-2xl font-black italic tracking-tighter uppercase">Recommended Games</h2>
+            <div class="h-[2px] flex-1 mx-6 bg-gradient-to-r from-blue-600 to-transparent"></div>
+        </div>
+        
+        <div id="infinite-container">
+            <!-- Initial Grid -->
+            <div class="category-section" data-url="index.html">
+                <div class="games-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-4 text-center">
+                    <a href="pacman.html" class="group flex flex-col">
+                        <div class="relative aspect-square rounded-xl overflow-hidden mb-2 ring-2 ring-transparent group-hover:ring-blue-500 transition-all duration-300">
+                            <img src="https://picsum.photos/seed/pacman/200/200" alt="Pacman" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xs font-bold text-gray-400 group-hover:text-white truncate transition-colors">Pacman</p>
+                    </a>
+                    <a href="monkey.html" class="group flex flex-col">
+                        <div class="relative aspect-square rounded-xl overflow-hidden mb-2 ring-2 ring-transparent group-hover:ring-blue-500 transition-all duration-300">
+                            <img src="https://picsum.photos/seed/monkey/200/200" alt="Monkey Mart" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xs font-bold text-gray-400 group-hover:text-white truncate transition-colors">Monkey Mart</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll UI -->
+        <div id="scrollLoader" class="hidden flex flex-col items-center py-10">
+            <div class="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-2"></div>
+            <p class="text-gray-500 text-xs uppercase tracking-widest font-bold">Loading More Games</p>
+        </div>
+
+        <div id="scrollEnd" class="hidden text-center py-10 border-t border-gray-800 mt-10">
+            <p class="text-gray-600 text-[10px] uppercase tracking-[0.3em] font-black">All games loaded • Enjoy playing</p>
+        </div>
+
+        <div id="scrollSentinel" class="h-10 w-full"></div>
+    </section>
+    
+    <footer class="bg-gray-900 text-gray-400 p-6 mt-10 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-white font-bold text-base">GameSite &copy; 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // Existing Game Functions
+        const gameUrl = "https://gamecomets.com/games/zooplop/";
+        function handleSmartStart() {
+            const iframe = document.getElementById("gameFrame");
+            const overlay = document.getElementById("playOverlay");
+            const indicator = document.getElementById("loadingIndicator");
+            indicator.classList.remove('hidden');
+            iframe.src = iframe.getAttribute('data-src');
+            iframe.onload = () => {
+                indicator.classList.add('hidden');
+                iframe.classList.replace('opacity-0', 'opacity-100');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                document.getElementById("popupFallback").classList.replace('hidden', 'flex');
+            };
+        }
+        function openInPopup() { window.open(gameUrl, 'ZooplopGame', 'width=1200,height=800'); }
+        function goFullscreen() {
+            let iframe = document.getElementById("gameFrame");
+            if (iframe.src === "about:blank") handleSmartStart();
+            if (iframe.requestFullscreen) iframe.requestFullscreen();
+        }
+
+        // Infinite Scroll + History API logic
+        const categoryPages = ['cars.html', 'new-game.html', 'puzzle.html'];
+        let currentIdx = 0;
+        let isFetching = false;
+        let allDone = false;
+
+        // Observer to change URL on scroll
+        const urlObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const newUrl = entry.target.getAttribute('data-url');
+                    if (window.location.pathname.split('/').pop() !== newUrl) {
+                        history.replaceState({ path: newUrl }, '', newUrl);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observe initial section
+        urlObserver.observe(document.querySelector('.category-section'));
+
+        async function loadNextCategory() {
+            if (isFetching || allDone) return;
+            const targetPage = categoryPages[currentIdx];
+            if (!targetPage) {
+                allDone = true;
+                document.getElementById('scrollEnd').classList.remove('hidden');
+                return;
+            }
+
+            isFetching = true;
+            document.getElementById('scrollLoader').classList.remove('hidden');
+
+            try {
+                const response = await fetch(targetPage);
+                const html = await response.text();
+                const parser = new DOMParser();
+                const externalDoc = parser.parseFromString(html, 'text/html');
+                const newGrid = externalDoc.querySelector('.games-grid');
+
+                if (newGrid) {
+                    const sectionWrapper = document.createElement('div');
+                    sectionWrapper.className = "category-section mt-4 fade-in";
+                    sectionWrapper.setAttribute('data-url', targetPage);
+                    
+                    const gridClone = document.createElement('div');
+                    gridClone.className = "games-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-4 text-center";
+                    gridClone.innerHTML = newGrid.innerHTML;
+                    
+                    sectionWrapper.appendChild(gridClone);
+                    document.getElementById('infinite-container').appendChild(sectionWrapper);
+                    
+                    // Observe the new section for URL changes
+                    urlObserver.observe(sectionWrapper);
+
+                    currentIdx++;
+                }
+            } catch (e) { console.error(e); } 
+            finally {
+                isFetching = false;
+                document.getElementById('scrollLoader').classList.add('hidden');
+            }
+        }
+
+        const sentinelObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) loadNextCategory();
+        }, { threshold: 0.1, rootMargin: '0px 0px 300px 0px' });
+
+        sentinelObserver.observe(document.getElementById('scrollSentinel'));
+    </script>
+</body>
+</html>
