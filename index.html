@@ -106,7 +106,7 @@
             </div>
         </section>
 
-        <!-- Right Sidebar (Vertical Ad) -->
+        <!-- Right Sidebar -->
         <aside class="hidden lg:flex w-72 flex-col">
             <div class="bg-gray-900 rounded-xl p-4 border border-gray-800 h-full min-h-[450px] flex flex-col items-center justify-center relative overflow-hidden group">
                 <span class="absolute top-4 text-gray-600 text-[10px] font-bold uppercase tracking-widest z-10">Advertisement</span>
@@ -117,123 +117,98 @@
         </aside>
     </main>
 
-    <!-- More Games Section with Infinite Scroll Implementation -->
+    <!-- Infinite Scroll Section -->
     <section class="max-w-[1600px] mx-auto p-6 mt-4">
         <div class="flex items-center justify-between mb-6">
             <h2 class="text-2xl font-black italic tracking-tighter uppercase">Recommended Games</h2>
             <div class="h-[2px] flex-1 mx-6 bg-gradient-to-r from-blue-600 to-transparent"></div>
         </div>
         
-        <!-- Infinite Container -->
         <div id="infinite-container">
             <!-- Initial Grid -->
-            <div class="games-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-4 text-center">
-                <a href="pacman.html" class="group flex flex-col">
-                    <div class="relative aspect-square rounded-xl overflow-hidden mb-2 ring-2 ring-transparent group-hover:ring-blue-500 transition-all duration-300">
-                        <img src="https://picsum.photos/seed/pacman/200/200" alt="Pacman" class="w-full h-full object-cover">
-                    </div>
-                    <p class="text-xs font-bold text-gray-400 group-hover:text-white truncate transition-colors">Pacman</p>
-                </a>
-                <a href="monkey.html" class="group flex flex-col">
-                    <div class="relative aspect-square rounded-xl overflow-hidden mb-2 ring-2 ring-transparent group-hover:ring-blue-500 transition-all duration-300">
-                        <img src="https://picsum.photos/seed/monkey/200/200" alt="Monkey Mart" class="w-full h-full object-cover">
-                    </div>
-                    <p class="text-xs font-bold text-gray-400 group-hover:text-white truncate transition-colors">Monkey Mart</p>
-                </a>
-                <!-- Placeholders to fill the row -->
-                <div class="aspect-square rounded-xl bg-gray-900 border border-gray-800"></div>
-                <div class="aspect-square rounded-xl bg-gray-900 border border-gray-800"></div>
-                <div class="aspect-square rounded-xl bg-gray-900 border border-gray-800"></div>
-                <div class="aspect-square rounded-xl bg-gray-900 border border-gray-800"></div>
-                <div class="aspect-square rounded-xl bg-gray-900 border border-gray-800"></div>
-                <div class="aspect-square rounded-xl bg-gray-900 border border-gray-800"></div>
+            <div class="category-section" data-url="index.html">
+                <div class="games-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-4 text-center">
+                    <a href="pacman.html" class="group flex flex-col">
+                        <div class="relative aspect-square rounded-xl overflow-hidden mb-2 ring-2 ring-transparent group-hover:ring-blue-500 transition-all duration-300">
+                            <img src="https://picsum.photos/seed/pacman/200/200" alt="Pacman" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xs font-bold text-gray-400 group-hover:text-white truncate transition-colors">Pacman</p>
+                    </a>
+                    <a href="monkey.html" class="group flex flex-col">
+                        <div class="relative aspect-square rounded-xl overflow-hidden mb-2 ring-2 ring-transparent group-hover:ring-blue-500 transition-all duration-300">
+                            <img src="https://picsum.photos/seed/monkey/200/200" alt="Monkey Mart" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xs font-bold text-gray-400 group-hover:text-white truncate transition-colors">Monkey Mart</p>
+                    </a>
+                </div>
             </div>
         </div>
 
-        <!-- Scroll Loading UI -->
+        <!-- Scroll UI -->
         <div id="scrollLoader" class="hidden flex flex-col items-center py-10">
             <div class="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-2"></div>
             <p class="text-gray-500 text-xs uppercase tracking-widest font-bold">Loading More Games</p>
         </div>
 
-        <!-- Scroll Error UI -->
-        <div id="scrollError" class="hidden flex flex-col items-center py-10 bg-red-500/5 border border-red-500/20 rounded-xl mt-4">
-            <p class="text-red-400 text-sm font-bold mb-3">Error loading more games</p>
-            <button onclick="loadNextCategory()" class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg text-xs font-black uppercase">Retry</button>
-        </div>
-
-        <!-- End of Content -->
         <div id="scrollEnd" class="hidden text-center py-10 border-t border-gray-800 mt-10">
             <p class="text-gray-600 text-[10px] uppercase tracking-[0.3em] font-black">All games loaded • Enjoy playing</p>
         </div>
 
-        <!-- Intersection Target -->
         <div id="scrollSentinel" class="h-10 w-full"></div>
     </section>
     
-    <!-- Footer -->
     <footer class="bg-gray-900 text-gray-400 p-6 mt-10 border-t border-gray-800">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <p class="text-white font-bold text-base">GameSite &copy; 2025</p>
-            <nav class="flex gap-6 text-[10px] font-bold uppercase tracking-widest">
-                <a href="#" class="hover:text-white">DMCA</a>
-                <a href="#" class="hover:text-white">Privacy</a>
-                <a href="#" class="hover:text-white">Terms</a>
-            </nav>
         </div>
     </footer>
 
     <script>
-        // --- EXISTING GAME LOGIC ---
+        // Existing Game Functions
         const gameUrl = "https://gamecomets.com/games/zooplop/";
-
         function handleSmartStart() {
             const iframe = document.getElementById("gameFrame");
             const overlay = document.getElementById("playOverlay");
             const indicator = document.getElementById("loadingIndicator");
-            const fallbackLink = document.getElementById("popupFallback");
-
             indicator.classList.remove('hidden');
             iframe.src = iframe.getAttribute('data-src');
-            
-            iframe.onload = function() {
+            iframe.onload = () => {
                 indicator.classList.add('hidden');
-                iframe.classList.remove('opacity-0');
-                iframe.classList.add('opacity-100');
+                iframe.classList.replace('opacity-0', 'opacity-100');
                 overlay.classList.add('opacity-0', 'pointer-events-none');
-                fallbackLink.classList.remove('hidden');
-                fallbackLink.classList.add('flex');
+                document.getElementById("popupFallback").classList.replace('hidden', 'flex');
             };
-
-            setTimeout(() => {
-                indicator.classList.add('hidden');
-                overlay.classList.add('opacity-0', 'pointer-events-none');
-                iframe.classList.add('opacity-100');
-                fallbackLink.classList.remove('hidden');
-                fallbackLink.classList.add('flex');
-            }, 3000);
         }
-
-        function openInPopup() {
-            window.open(gameUrl, 'ZooplopGame', 'width=1200,height=800,scrollbars=yes,resizable=yes,noreferrer');
-        }
-
+        function openInPopup() { window.open(gameUrl, 'ZooplopGame', 'width=1200,height=800'); }
         function goFullscreen() {
             let iframe = document.getElementById("gameFrame");
             if (iframe.src === "about:blank") handleSmartStart();
             if (iframe.requestFullscreen) iframe.requestFullscreen();
-            else if (iframe.webkitRequestFullscreen) iframe.webkitRequestFullscreen();
         }
 
-        // --- INFINITE SCROLL LOGIC ---
+        // Infinite Scroll + History API logic
         const categoryPages = ['cars.html', 'new-game.html', 'puzzle.html'];
         let currentIdx = 0;
         let isFetching = false;
         let allDone = false;
 
+        // Observer to change URL on scroll
+        const urlObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const newUrl = entry.target.getAttribute('data-url');
+                    if (window.location.pathname.split('/').pop() !== newUrl) {
+                        history.replaceState({ path: newUrl }, '', newUrl);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observe initial section
+        urlObserver.observe(document.querySelector('.category-section'));
+
         async function loadNextCategory() {
             if (isFetching || allDone) return;
-
             const targetPage = categoryPages[currentIdx];
             if (!targetPage) {
                 allDone = true;
@@ -243,57 +218,43 @@
 
             isFetching = true;
             document.getElementById('scrollLoader').classList.remove('hidden');
-            document.getElementById('scrollError').classList.add('hidden');
 
             try {
                 const response = await fetch(targetPage);
-                if (!response.ok) throw new Error("Failed fetch");
-                
                 const html = await response.text();
                 const parser = new DOMParser();
                 const externalDoc = parser.parseFromString(html, 'text/html');
                 const newGrid = externalDoc.querySelector('.games-grid');
 
                 if (newGrid) {
-                    const container = document.getElementById('infinite-container');
+                    const sectionWrapper = document.createElement('div');
+                    sectionWrapper.className = "category-section mt-4 fade-in";
+                    sectionWrapper.setAttribute('data-url', targetPage);
                     
-                    // Create wrapper with fade animation
-                    const wrapper = document.createElement('div');
-                    wrapper.className = "mt-4 fade-in";
-                    
-                    // Clone the grid structure but keep your layout classes
                     const gridClone = document.createElement('div');
                     gridClone.className = "games-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-4 text-center";
-                    
-                    // Copy cards
                     gridClone.innerHTML = newGrid.innerHTML;
                     
-                    wrapper.appendChild(gridClone);
-                    container.appendChild(wrapper);
+                    sectionWrapper.appendChild(gridClone);
+                    document.getElementById('infinite-container').appendChild(sectionWrapper);
+                    
+                    // Observe the new section for URL changes
+                    urlObserver.observe(sectionWrapper);
 
                     currentIdx++;
-                    if (currentIdx >= categoryPages.length) {
-                        allDone = true;
-                        document.getElementById('scrollEnd').classList.remove('hidden');
-                    }
                 }
-            } catch (e) {
-                console.error(e);
-                document.getElementById('scrollError').classList.remove('hidden');
-            } finally {
+            } catch (e) { console.error(e); } 
+            finally {
                 isFetching = false;
                 document.getElementById('scrollLoader').classList.add('hidden');
             }
         }
 
-        // Setup Observer
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                loadNextCategory();
-            }
+        const sentinelObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) loadNextCategory();
         }, { threshold: 0.1, rootMargin: '0px 0px 300px 0px' });
 
-        observer.observe(document.getElementById('scrollSentinel'));
+        sentinelObserver.observe(document.getElementById('scrollSentinel'));
     </script>
 </body>
 </html>
